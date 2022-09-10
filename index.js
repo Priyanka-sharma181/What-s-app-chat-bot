@@ -1,19 +1,17 @@
 const express = require("express")
-const { sendTextMessage } = require("./messages")
+
 const app = express()
 
 app.use(express.json())
 
-
-
 app.post("/webhook",(req,res)=>{
-    const contacts = req.body.contacts
+    const contacts = req.body.contacts[0]
     const message = req.body.messages[0]
     if(message.type =="text"){
-      if(message.text.body=="hii"){
-          return  sendTextMessage()
+      if(message.text.body.toLowerCase()=="hii"){
+        // console.log(`hii ${contacts.profile.name}`);
+          return  `hii ${contacts.profile.name}`
       }
-     
     }
 })
 

@@ -39,7 +39,8 @@ data = {
          }
 }
 
-async function sendImage(){
+
+async function sendImage(data){
     try {
         const response =await axios.post('https://whatsapp.turn.io/v1/messages',data,
         {

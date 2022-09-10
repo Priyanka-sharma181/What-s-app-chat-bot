@@ -57,4 +57,3 @@ async function sendImage(data){
 }
 
 sendImage(data)
-module.exports = {sendTextMessage,sendImage}

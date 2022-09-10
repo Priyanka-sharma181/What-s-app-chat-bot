@@ -1,4 +1,4 @@
-const axios = require('axios')
+const axios = require("axios")
 
 async function sendTextMessage(){
  try {
@@ -21,33 +21,13 @@ async function sendTextMessage(){
         },
     })
     const id = response.data.messages[0].id
-    // return id
-    // console.log(response.data);
+    return id
     
  } catch (error) {
-    // console.log(error);
     return error
  }
 }
-// sendTextMessage()
-//  for media msg 
-
-//async function sendMedia(){
-//     try {
-//         const response = await axios.post("https://whatsapp.turn.io/v1/media",
-
-//         {
-//             headers: {
-//                 Authorization:
-//                     "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJUdXJuIiwiZXhwIjoxNzIzMjk0MDQ4LCJpYXQiOjE2NjIxMjI4OTAsImlzcyI6IlR1cm4iLCJqdGkiOiJkZmQzZjViNy04ZWMxLTQxMGMtYjg2OC1hMTJkY2EwMWQ3NTUiLCJuYmYiOjE2NjIxMjI4ODksInN1YiI6Im51bWJlcjozNDQ1IiwidHlwIjoiYWNjZXNzIn0.8x2Ba-VjPmcnVtfByytROQKN0nWQIvjZBQqG--AtF2hPtIEkUhLt82NqXMMdd4fcmtAIcWvaZImvW8VBbtifAQ",
-//                 "content-type": "image/webp",
-//             }
-//         } 
-//         )
-//     } catch (error) {
-        
-//     }
-// }
+sendTextMessage()
 
 data = {  
     "recipient_type": "individual",
@@ -59,19 +39,9 @@ data = {
          }
 }
 
-function sendMedia(data){
-  if(data.type=="image"){
-    return data
-  }else if(data.type=="audio"){
-    return data
-  }else if(data.type== "sticker"){
-    return data
-  }
-}
-
 async function sendImage(){
     try {
-        const response =await axios.post('https://whatsapp.turn.io/v1/messages',sendMedia(data),
+        const response =await axios.post('https://whatsapp.turn.io/v1/messages',data,
         {
             headers: {
                 Authorization:
@@ -80,11 +50,10 @@ async function sendImage(){
             }
         }
         )
-        // console.log(response);
     } catch (error) {
         console.log(error);
     }
 }
 
-
+sendImage(data)
 module.exports = {sendTextMessage,sendImage}

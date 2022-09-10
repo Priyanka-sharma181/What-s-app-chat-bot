@@ -7,11 +7,13 @@ app.use(express.json())
 
 
 app.post("/webhook",(req,res)=>{
-    const body = req.body
     const contacts = req.body.contacts
     const message = req.body.messages[0]
     if(message.type =="text"){
-      return  sendTextMessage()
+      if(message.text.body=="hii"){
+          return  sendTextMessage()
+      }
+     
     }
 })
 

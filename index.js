@@ -3,22 +3,13 @@ const app = express()
 const fileUplode = require("express-fileupload")
 const { router } = require("./routers/routes")
 
-const port = process.env.port || 3000
+const port = process.env.PORT || 8080;
 app.use(express.json())
 app.use(fileUplode())
 app.use("/",router)
 
 
-// app.post("/webhook",(req,res)=>{
-//     const contacts = req.body.contacts[0]
-//     const message = req.body.messages[0]
-//     if(message.type =="text"){
-//       if(message.text.body.toLowerCase()=="hii"){
-//         // console.log(`hii ${contacts.profile.name}`);
-//           return  `hii ${contacts.profile.name}`
-//       }
-//     }
-// })
+
 
 
 app.listen(port,()=>{

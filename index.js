@@ -9,9 +9,6 @@ app.use(fileUplode())
 app.use("/",router)
 
 
-
-
-
 app.listen(port,()=>{
     console.log("listining ");
 })

@@ -1,5 +1,4 @@
 const axios = require("axios");
-const { parse } = require("dotenv");
 const { sendTextMessage, sendImage, sendAudio } = require("./messages");
 
 const sendMessage=async(req,res)=>{
@@ -50,9 +49,31 @@ const sendMessage=async(req,res)=>{
 
 
 
+const webhookForText = async(req,res)=>{
+    try {
+        let contacts = req.body.contacts[0]
+        let message = req.body.messages[0]
+        let data = {
+            "preview_url":false,
+            "recipient_type": "individual",
+            "to": `91${contacts.number}`,
+            "type":   "text",
+            "text": {
+              "body": `${message.text}`
+            }}
+        if (message.type == "text") {
+            if(message.text.body=="Hii"){
+                return sendTextMessage(data)
 
-
-module.exports={sendMessage}
+            }
+            
+        }
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+module.exports={sendMessage,webhookForText}
 
 
 
